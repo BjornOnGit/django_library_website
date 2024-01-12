@@ -1,4 +1,4 @@
-#!/home/bjorn/Desktop/django_library_website/library/.venv/bin/python3
+#!/home/bjorn/Desktop/django_library_website/library/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

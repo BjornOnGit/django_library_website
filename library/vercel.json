@@ -1,8 +1,14 @@
 {
-    "rewrites": [
+    "builds": [
+        {
+            "src": "django_project/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
         {
             "source": "/(.*)",
-            "destination": "/"
+            "destination": "django_project/wsgi.py"
         }
     ]
 }
