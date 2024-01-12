@@ -7,7 +7,7 @@
     ],
     "routes": [
         {
-            "source": "/(.*)",
+            "src": "/(.*)",
             "destination": "django_project/wsgi.py"
         }
     ]
