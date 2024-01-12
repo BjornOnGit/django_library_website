@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'rest_framework', # 3rd party
     'books.apps.BooksConfig', 
@@ -75,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_project.wsgi.application'
+WSGI_APPLICATION = 'django_project.wsgi.app'
 
 
 # Database
@@ -83,15 +84,17 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': env.str('DATABASE_URL'),
+        'NAME': env.str('PGDATABASE'),
+        'USER': env.str('PGUSER'),
+        'PASSWORD': env.str('PGPASSWORD'),
+        'HOST': env.str('PGHOST'),
+        'PORT': env.str('PGPORT')
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-DATABASE_URL = env.str('DATABASE_URL')
-
-if DATABASE_URL:
-    DATABASES['default'] = env.dj_database_url.parse(DATABASE_URL)
 
 
 # Password validation
